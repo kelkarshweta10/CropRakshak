@@ -1,0 +1,1 @@
+CropRakshak prototype – disease detection helper for farmers
