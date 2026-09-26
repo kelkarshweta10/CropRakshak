@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CropRakshak | AI Crop Diagnosis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">🌱 Crop<span>Rakshak</span></div>
+  <nav><a href="#home">Home</a><a href="#scan">Scan</a><a href="#history">History</a><a href="#about">About</a></nav>
+  <button class="language-btn" onclick="changeLanguage()">🌐 English</button>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="badge">🌾 AI Powered Smart Farming</span>
+    <h1>Protect Your Crops<br>With <span>AI Intelligence</span></h1>
+    <p>Detect crop diseases, identify pests, analyze severity and get treatment guidance — all in one place.</p>
+    <div class="hero-buttons">
+      <button class="primary-btn" onclick="scrollToScan()">📷 Scan Crop</button>
+      <button class="secondary-btn" onclick="showDemo()">▶ How It Works</button>
+    </div>
+    <div class="hero-stats">
+      <div><strong>92%</strong><span>Demo Accuracy</span></div>
+      <div><strong>24/7</strong><span>Field Support</span></div>
+      <div><strong>3</strong><span>Severity Levels</span></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="scanner-circle">📷</div>
+    <h3>Crop AI Scanner</h3>
+    <p>Upload a crop image to begin diagnosis.</p>
+    <div class="scan-line"></div>
+    <span class="ready">● Ready to Scan</span>
+  </div>
+</section>
+
+<section class="features">
+  <div class="section-title"><span>SMART FEATURES</span><h2>Everything You Need to <span>Protect Your Crop</span></h2><p>Diagnosis, severity analysis, treatment guidance and tracking.</p></div>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-icon">📷</div><h3>AI Disease Detection</h3><p>Identify probable crop diseases from leaf and plant images.</p></div>
+    <div class="feature-card"><div class="feature-icon">🐛</div><h3>Pest Detection</h3><p>Detect visible insects and pest damage using image analysis.</p></div>
+    <div class="feature-card"><div class="feature-icon">📊</div><h3>Severity Analysis</h3><p>Understand whether the condition is Mild, Moderate or Severe.</p></div>
+    <div class="feature-card"><div class="feature-icon">💊</div><h3>Treatment Guidance</h3><p>Get diagnosis-linked management recommendations.</p></div>
+  </div>
+</section>
+
+<section class="scan-section" id="scan">
+  <div class="section-title"><span>AI DIAGNOSIS</span><h2>Scan Your <span>Crop</span></h2><p>Upload a crop image and the demo AI will analyze it.</p></div>
+  <div class="scanner-container">
+    <div class="upload-box">
+      <div class="upload-icon">📷</div>
+      <h3>Upload Crop Image</h3>
+      <p>Take a clear photo of the crop leaf or upload an existing image.</p>
+      <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+      <label for="imageInput" class="upload-btn">Choose Image</label>
+      <div id="previewContainer"></div>
+      <button id="analyzeBtn" class="analyze-btn" onclick="analyzeCrop()" disabled>🔍 Analyze Crop</button>
+    </div>
+    <div class="result-box">
+      <div class="result-header"><h3>AI Diagnosis Result</h3><span id="status">Waiting for scan</span></div>
+      <div id="resultContent"><div class="empty-result"><div>🌱</div><h3>No Diagnosis Yet</h3><p>Upload an image to see AI analysis results.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="diagnosis-section">
+  <div class="diagnosis-card">
+    <div class="diagnosis-top">
+      <div><span class="small-label">DETECTED CONDITION</span><h2 id="diseaseName">—</h2></div>
+      <div class="confidence"><span>Confidence</span><strong id="confidenceValue">—</strong></div>
+    </div>
+    <div class="severity"><div class="severity-header"><span>Severity</span><strong id="severityText">—</strong></div><div class="progress"><div id="severityProgress" class="progress-bar"></div></div></div>
+    <div class="affected"><span>Affected Area</span><strong id="affectedArea">—</strong></div>
+  </div>
+  <div class="treatment-card">
+    <div class="treatment-title"><div class="treatment-icon">💊</div><div><span>RECOMMENDED ACTION</span><h2>Treatment & Management</h2></div></div>
+    <div id="treatmentContent"><p class="placeholder">Treatment recommendations will appear after crop diagnosis.</p></div>
+  </div>
+</section>
+
+<section class="tracking" id="history">
+  <div class="section-title"><span>TREATMENT TRACKING</span><h2>Is Your Crop <span>Improving?</span></h2><p>Compare scans before and after treatment.</p></div>
+  <div class="comparison">
+    <div class="comparison-card"><div class="comparison-label">BEFORE TREATMENT</div><div class="circle-progress"><strong>30%</strong></div><h3>Moderate</h3><p>Higher affected area</p></div>
+    <div class="arrow">→</div>
+    <div class="comparison-card"><div class="comparison-label">AFTER TREATMENT</div><div class="circle-progress"><strong>15%</strong></div><h3>Improving</h3><p>Reduced affected area</p></div>
+  </div>
+  <div class="trend"><span>📈 Trend</span><strong>↓ Improving</strong><p>The affected area reduced by 50% in this demo.</p></div>
+</section>
+
+<section class="history-section">
+  <div class="section-title"><span>SCAN HISTORY</span><h2>Your Crop <span>History</span></h2></div>
+  <div class="history-table">
+    <div class="table-header"><span>Date</span><span>Crop</span><span>Diagnosis</span><span>Severity</span><span>Confidence</span></div>
+    <div id="historyList"><div class="empty-history">No scans recorded yet.</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-content">
+    <span>ABOUT CROPRakshak</span>
+    <h2>Detect. Treat. <span>Track. Protect.</span></h2>
+    <p>CropRakshak is a portable AI-based crop diagnosis concept designed to help farmers identify crop diseases and pests quickly in the field.</p>
+    <div class="about-points"><div>✓ Portable field diagnosis</div><div>✓ Disease + pest detection</div><div>✓ Severity estimation</div><div>✓ Treatment guidance</div><div>✓ Before/after tracking</div><div>✓ Smartphone connectivity</div></div>
+  </div>
+  <div class="about-visual"><div class="plant">🌱</div><div class="floating-card card1">🧠 AI Analysis</div><div class="floating-card card2">📊 Severity 15%</div><div class="floating-card card3">✓ Improving</div></div>
+</section>
+
+<footer><div class="footer-logo">🌱 CropRakshak</div><p>AI-powered crop diagnosis and treatment assistant.</p><div>© 2026 CropRakshak | College Project</div></footer>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
